@@ -9,13 +9,33 @@ namespace BagageHåndtering
         //incapsulation
         
         //SortingGateQueue
+        public void SortingGateQueue()
+        {
+            
+        }
         
         //consumer og tjekker sin egen kø
-        //samler op fra køen hvis der ligger noget
-        //skal kunne åbne gate 
-        //skal kunne lukkes igen (en methode til at slette sig selv)
-        //hvis der er bagage kan der samles op og håndteres
+        public void CheckSortingGateQueu()
+                {
+                    SortingGateQueue();
+                }
         
-        //Consumer
+        //samler op fra køen hvis der ligger noget
+        public void AddToGate()
+        {
+            
+        }
+        
+        //skal kunne åbne gate 
+        public void OpenQueue()
+        {
+            
+        }
+        //skal kunne lukkes igen (en methode til at slette sig selv)
+        public void CloseQueue()
+        {
+            
+        }
+        //hvis der er bagage kan der samles op og håndteres
     }
 }

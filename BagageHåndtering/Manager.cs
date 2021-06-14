@@ -19,6 +19,15 @@ namespace BagageHåndtering
             //_gagtsList.Add(new Gagts());
             //_countersList.Add(new Counters());
         }
+
+        /*
+        public List<Suitcases> NewSuitcases()
+        {
+             List<Suitcases> first = _suitcasesList.Add(new Suitcases("jens", "London", 1));
+
+             return first;
+        }
+        */
         
         // lav en methode som returner en ny suitcase:
         // _suitcasesList.Add( new Suitcases());

@@ -8,11 +8,34 @@ namespace BagageHåndtering
         
         //funktionalitet
         //tag fra counter kø
-        //påfør tidspunkt for hvornår dene r sorteret
+        public void CheckCounterQueue()
+        {
+            
+        }
+        
+        //påfør tidspunkt for hvornår den er sorteret
+        public void SortingYime()
+        {
+            
+        }
         //kig på gate nummer
         //find gate 
+        public void LookUpGate()
+        {
+            
+        }
+        
         //tilføj til gate kø
+        public void AddToGateQueue()
+        {
+            
+        }
+        
         //fjern fra counterkø
+        public void RemoveFromCounterQueue()
+        {
+            
+        }
         
         //Producer
         //Consumer

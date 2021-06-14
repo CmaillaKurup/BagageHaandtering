@@ -13,7 +13,7 @@ namespace BagageHåndtering
             this.destination = destination;
             this.id = id;
         }
-        
+
         //incapsulation
         public string Name
         {
@@ -30,10 +30,25 @@ namespace BagageHåndtering
             get => id;
             set => id = value;
         }
-        //opret kuffert
-        //har methoderne der setter checin time og sorting time
-        //øvrige classer benytter disse methoder
         
+        //Adding a new suitcase
+        public void NewSuitcase()
+        {
+            
+        }
+
+        //This methode is used by counter
+        public void SetCheckinTime()
+        {
+            
+        }
+
+        //This methode is used by sorting
+        public void SetSortingTime()
+        {
+            
+        }
+
         //Producer
     }
 }
