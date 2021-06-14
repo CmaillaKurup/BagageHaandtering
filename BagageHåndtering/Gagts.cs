@@ -1,3 +1,5 @@
+using System.Collections.Generic;
+
 namespace BagageHåndtering
 {
     public class Gagts
@@ -9,6 +11,8 @@ namespace BagageHåndtering
         //incapsulation
         
         //SortingGateQueue
+        static Queue<int> _sortingGateQueue = new Queue<int>();
+
         public void SortingGateQueue()
         {
             

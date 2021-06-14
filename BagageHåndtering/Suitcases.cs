@@ -1,3 +1,6 @@
+using System;
+using System.Threading;
+
 namespace BagageHåndtering
 {
     public class Suitcases
@@ -6,6 +9,8 @@ namespace BagageHåndtering
         private string destination;
         private int id;
         
+
+
         //constructor
         public Suitcases(string name, string destination, int id)
         {
