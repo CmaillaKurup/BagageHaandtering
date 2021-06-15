@@ -5,9 +5,6 @@ namespace BagageHåndtering
 {
     public class Manager
     {
-        private List<Gagts> _gagtsList;
-        private List<Counter> _countersList;
-        
         static Queue<Suitcases> _counterQueue = new Queue<Suitcases>();
         static Queue<Suitcases> _sortingQueue = new Queue<Suitcases>();
         static Queue<Suitcases> _GateQueue = new Queue<Suitcases>();

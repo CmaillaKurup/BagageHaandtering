@@ -10,11 +10,7 @@ namespace BagageHåndtering
         {
             
         }
-        
-        static object _lock = new object();
-        static Random _random = new Random();
-        private static int _id = 0;
-        
+
         //incapsulation
         
         //funktionalitet
