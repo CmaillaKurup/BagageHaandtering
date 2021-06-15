@@ -1,6 +1,4 @@
-
 using System;
-using System.Collections.Generic;
 using System.Threading;
 
 namespace BagageHåndtering
@@ -51,18 +49,6 @@ namespace BagageHåndtering
                     Monitor.PulseAll(Program.mng.SortingQueue);
                 }
             }
-        }
-        
-        //skal give bagae mangelnde informtion
-        //sæt checkout tidspunkt
-        public void CheckoutTime()
-        {
-            
-        }
-        //kig på destination og oversæt til gatenummer
-        public void TranslateDestinationToGate()
-        {
-            
         }
     }
 }

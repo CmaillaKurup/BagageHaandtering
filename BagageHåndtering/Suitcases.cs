@@ -39,19 +39,5 @@ namespace BagageHåndtering
             get => checkedIn;
             set => checkedIn = value;
         }
-
-        //This methode is used by counter
-        public void SetCheckinTime()
-        {
-            
-        }
-
-        //This methode is used by sorting
-        public void SetSortingTime()
-        {
-            
-        }
-
-        //Producer
     }
 }
