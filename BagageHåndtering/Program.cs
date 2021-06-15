@@ -1,19 +1,32 @@
 ﻿using System;
+using System.Threading;
 
 namespace BagageHåndtering
 {
     internal class Program
     {
+        public static Manager mng = new Manager();
         public static void Main()
         {
-            Manager mng = new Manager();
-            mng.NewSuitcases("jens", "London", 1);
-            mng.NewSuitcases("Hanne", "Paris", 2);
-            mng.NewSuitcases("Claus", "Tralala", 3);
+            mng.NewSuitcase("jens", "London", 1);
+            mng.NewSuitcase("Hanne", "Paris", 2);
+            mng.NewSuitcase("Claus", "Tralala", 3);
+            mng.NewSuitcase("jens", "London", 1);
+            mng.NewSuitcase("Hanne", "Paris", 2);
+            mng.NewSuitcase("Claus", "Tralala", 3);
+            mng.NewSuitcase("jens", "London", 1);
+            mng.NewSuitcase("Hanne", "Paris", 2);
+            mng.NewSuitcase("Claus", "Tralala", 3);
+            mng.NewSuitcase("jens", "London", 1);
+            mng.NewSuitcase("Hanne", "Paris", 2);
+            mng.NewSuitcase("Claus", "Tralala", 3);
 
-            Counters counter = new Counters();
-            
-            Console.WriteLine(counter);
+            while (true)
+            {
+                Thread.Sleep(100);
+                Console.WriteLine(mng.CounterQueue.Count + " counter");
+                Console.WriteLine(mng.SortingQueue.Count + " sorting");
+            }
         }
     }
 }

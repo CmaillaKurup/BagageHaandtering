@@ -1,4 +1,4 @@
-
+using System;
 
 namespace BagageHåndtering
 {
@@ -7,9 +7,8 @@ namespace BagageHåndtering
         private string name;
         private string destination;
         private int id;
+        private DateTime checkedIn;
         
-
-
         //constructor
         public Suitcases(string name, string destination, int id)
         {
@@ -34,11 +33,11 @@ namespace BagageHåndtering
             get => id;
             set => id = value;
         }
-        
-        //Adding a new suitcase
-        public void NewSuitcase()
+
+        public DateTime CheckedIn
         {
-            
+            get => checkedIn;
+            set => checkedIn = value;
         }
 
         //This methode is used by counter

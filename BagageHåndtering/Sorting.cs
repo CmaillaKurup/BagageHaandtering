@@ -3,7 +3,10 @@ namespace BagageHåndtering
     public class Sorting
     {
         //constructor
-        
+        public Sorting()
+        {
+            
+        }
         //incapsulation
         
         //funktionalitet

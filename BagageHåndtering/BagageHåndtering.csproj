@@ -38,7 +38,7 @@
         <Reference Include="System.Xml" />
     </ItemGroup>
     <ItemGroup>
-        <Compile Include="Counters.cs" />
+        <Compile Include="Counter.cs" />
         <Compile Include="Gagts.cs" />
         <Compile Include="Manager.cs" />
         <Compile Include="Program.cs" />

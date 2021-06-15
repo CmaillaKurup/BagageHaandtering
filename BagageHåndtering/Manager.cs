@@ -6,34 +6,36 @@ namespace BagageHåndtering
 {
     public class Manager
     {
-        private List<Suitcases> _suitcasesList;
         private List<Gagts> _gagtsList;
-        private List<Counters> _countersList;
-        //static object _lock = new object();
-        //static Random _random = new Random();
+        private List<Counter> _countersList;
         
-        static Queue<int> _CounterQueue = new Queue<int>();
-        static Queue<int> _SortingQueue = new Queue<int>();
+        static Queue<Suitcases> _counterQueue = new Queue<Suitcases>();
+        static Queue<Suitcases> _sortingQueue = new Queue<Suitcases>();
+        static Queue<int> _GateQueue = new Queue<int>();
 
-
-        private Counters counters = new Counters();
+        private Counter _counter = new Counter();
         public Manager()
         {
-            Thread counterGet = new Thread(counters.GetLuggage);
-            Thread counterMove = new Thread(counters.MoveToSorting);
-            
-            counterGet.Start();
-            counterMove.Start();
+            Thread counter = new Thread(_counter.HandleLuggage);
+
+            counter.Start();
         }
 
-        public void NewSuitcases(string name, string destination, int id)
+        public Queue<Suitcases> CounterQueue
         {
-            _suitcasesList.Add(new Suitcases(name, destination, id));
+            get { return _counterQueue; }
+            set { _counterQueue = value; }
         }
-        
-        
-        // lav en methode som returner en ny suitcase:
-        // _suitcasesList.Add( new Suitcases());
 
+        public Queue<Suitcases> SortingQueue
+        {
+            get { return _sortingQueue; }
+            set { _sortingQueue = value; }
+        }
+
+        public void NewSuitcase(string name, string destination, int id)
+        {
+            _counterQueue.Enqueue(new Suitcases(name, destination, id));
+        }
     }
 }

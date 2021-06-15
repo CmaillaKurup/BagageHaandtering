@@ -20,7 +20,6 @@ namespace BagageHåndtering
         }
         
         //SortingGateQueue
-        static Queue<int> _GateQueue = new Queue<int>();
 
         public void SortingGateQueue()
         {
