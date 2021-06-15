@@ -11,14 +11,17 @@ namespace BagageHåndtering
         
         static Queue<Suitcases> _counterQueue = new Queue<Suitcases>();
         static Queue<Suitcases> _sortingQueue = new Queue<Suitcases>();
-        static Queue<int> _GateQueue = new Queue<int>();
+        static Queue<Suitcases> _GateQueue = new Queue<Suitcases>();
 
         private Counter _counter = new Counter();
+        private Sorting _sorting = new Sorting();
         public Manager()
         {
             Thread counter = new Thread(_counter.HandleLuggage);
+            Thread sorting = new Thread(_sorting.HanddleLuggage);
 
             counter.Start();
+            sorting.Start();
         }
 
         public Queue<Suitcases> CounterQueue
@@ -31,6 +34,11 @@ namespace BagageHåndtering
         {
             get { return _sortingQueue; }
             set { _sortingQueue = value; }
+        }
+        public Queue<Suitcases> GateQueue
+        {
+            get { return _GateQueue; }
+            set { _GateQueue = value; }
         }
 
         public void NewSuitcase(string name, string destination, int id)

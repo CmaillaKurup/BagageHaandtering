@@ -27,7 +27,6 @@ namespace BagageHåndtering
             Console.WriteLine("Counter oppend - Thread started");
             while (true)
             {
-                
                 Suitcases tempSuitcase;
                 lock (Program.mng.CounterQueue)
                 {

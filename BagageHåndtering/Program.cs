@@ -26,6 +26,7 @@ namespace BagageHåndtering
                 Thread.Sleep(100);
                 Console.WriteLine(mng.CounterQueue.Count + " counter");
                 Console.WriteLine(mng.SortingQueue.Count + " sorting");
+                Console.WriteLine(mng.GateQueue.Count + " Gate");
             }
         }
     }
