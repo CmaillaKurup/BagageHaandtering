@@ -14,6 +14,7 @@ namespace BagageHåndtering
         //incapsulation
         
         //funktionalitet
+
         //Producer
         //Consumer
         public void HandleLuggage()
@@ -33,7 +34,8 @@ namespace BagageHåndtering
                 }
 
                 tempSuitcase.CheckedIn = DateTime.Now;
-                Thread.Sleep(1000);
+                int temp = Program.mng._randome.Next(100, 2000);
+                Thread.Sleep(temp);
 
                 lock (Program.mng.SortingQueue)
                 {

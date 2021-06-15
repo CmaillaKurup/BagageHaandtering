@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.Threading;
 
@@ -11,6 +12,9 @@ namespace BagageHåndtering
 
         private Counter _counter = new Counter();
         private Sorting _sorting = new Sorting();
+        
+        public Random _randome = new Random();
+
         public Manager()
         {
             Thread counter = new Thread(_counter.HandleLuggage);
@@ -35,6 +39,12 @@ namespace BagageHåndtering
         {
             get { return _GateQueue; }
             set { _GateQueue = value; }
+        }
+
+        public Random Random
+        {
+            get { return _randome; }
+            set { _randome = value; }
         }
 
         public void NewSuitcase(string name, string destination, int id)

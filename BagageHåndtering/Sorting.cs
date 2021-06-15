@@ -26,7 +26,10 @@ namespace BagageHåndtering
                     tempSuitcase = Program.mng.SortingQueue.Dequeue();
                     Monitor.PulseAll(Program.mng.SortingQueue);
                 }
-                Thread.Sleep(1000);
+                
+                int temp = Program.mng._randome.Next(100, 2000);
+                Thread.Sleep(temp);
+                
                 lock (Program.mng.GateQueue)
                 {
                     if (Program.mng.GateQueue.Count > 9)
