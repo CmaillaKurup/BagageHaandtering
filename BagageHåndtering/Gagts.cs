@@ -7,11 +7,20 @@ namespace BagageHåndtering
         private string destinationGate; 
         
         //constructor
+        public Gagts()
+        {
+            
+        }
         
         //incapsulation
+        public string DestinationGate
+        {
+            get => destinationGate;
+            set => destinationGate = value;
+        }
         
         //SortingGateQueue
-        static Queue<int> _sortingGateQueue = new Queue<int>();
+        static Queue<int> _GateQueue = new Queue<int>();
 
         public void SortingGateQueue()
         {
@@ -20,9 +29,9 @@ namespace BagageHåndtering
         
         //consumer og tjekker sin egen kø
         public void CheckSortingGateQueu()
-                {
-                    SortingGateQueue();
-                }
+        {
+            SortingGateQueue();
+        }
         
         //samler op fra køen hvis der ligger noget
         public void AddToGate()

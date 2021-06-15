@@ -7,50 +7,25 @@ namespace BagageHåndtering
     public class Manager
     {
         private List<Suitcases> _suitcasesList;
-        //private List<Sorting> _sortingsList;
         private List<Gagts> _gagtsList;
         private List<Counters> _countersList;
-        static object _lock = new object();
-        static Random _random = new Random();
+        //static object _lock = new object();
+        //static Random _random = new Random();
         
-        static Queue<int> _suitcaseCounterQueue = new Queue<int>();
-        static Queue<int> _counterSortingQueue = new Queue<int>();
+        static Queue<int> _CounterQueue = new Queue<int>();
+        static Queue<int> _SortingQueue = new Queue<int>();
 
-        //suitcaseCounterQueue
-        //counterSortingQueue
-        
+
+        private Counters counters = new Counters();
         public Manager()
         {
-            //_suitcasesList.Add( new Suitcases());
-            //_sortingsList.Add(new Sorting());
-            //_gagtsList.Add(new Gagts());
-            //_countersList.Add(new Counters());
+            Thread counterGet = new Thread(counters.GetLuggage);
+            Thread counterMove = new Thread(counters.MoveToSorting);
+            
+            counterGet.Start();
+            counterMove.Start();
         }
 
-        public void ProduceBag()
-        {
-            while (true)
-            {
-                lock (_lock)
-                {
-                    //id = _random.Next(1, 10);
-                    if (_suitcasesList.Count < 10)
-                    {
-                        //_suitcasesList.Enqueue(_something.Length);
-                        Console.WriteLine();
-                        Monitor.PulseAll(_lock);
-                    }
-                    else
-                    {
-                        Monitor.Wait(_lock);
-                        Console.WriteLine();
-                    }
-                }
-                Thread.Sleep(_random.Next(200, 1000));
-            }
-        }
-
-        
         public void NewSuitcases(string name, string destination, int id)
         {
             _suitcasesList.Add(new Suitcases(name, destination, id));
