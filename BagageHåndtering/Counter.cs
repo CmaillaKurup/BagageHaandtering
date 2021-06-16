@@ -22,29 +22,29 @@ namespace BagageHåndtering
             Console.WriteLine("Counter oppend - Thread started");
             while (true)
             {
-                Suitcases tempSuitcase;
-                lock (Program.mng.CounterQueue)
+                Suitcase tempSuitcase;
+                lock (Program._mng.CounterQueue)
                 {
-                    if (Program.mng.CounterQueue.Count == 0)
+                    if (Program._mng.CounterQueue.Count == 0)
                     {
-                        Monitor.Wait(Program.mng.CounterQueue);   
+                        Monitor.Wait(Program._mng.CounterQueue);   
                     }
-                    tempSuitcase = Program.mng.CounterQueue.Dequeue();
-                    Monitor.PulseAll(Program.mng.CounterQueue);
+                    tempSuitcase = Program._mng.CounterQueue.Dequeue();
+                    Monitor.PulseAll(Program._mng.CounterQueue);
                 }
 
                 tempSuitcase.CheckedIn = DateTime.Now;
-                int temp = Program.mng._randome.Next(100, 2000);
+                int temp = Program._mng._randome.Next(100, 2000);
                 Thread.Sleep(temp);
 
-                lock (Program.mng.SortingQueue)
+                lock (Program._mng.SortingQueue)
                 {
-                    if (Program.mng.SortingQueue.Count > 9)
+                    if (Program._mng.SortingQueue.Count > 9)
                     {
-                        Monitor.Wait(Program.mng.SortingQueue);   
+                        Monitor.Wait(Program._mng.SortingQueue);   
                     }
-                    Program.mng.SortingQueue.Enqueue(tempSuitcase); 
-                    Monitor.PulseAll(Program.mng.SortingQueue);
+                    Program._mng.SortingQueue.Enqueue(tempSuitcase); 
+                    Monitor.PulseAll(Program._mng.SortingQueue);
                 }
             }
         }

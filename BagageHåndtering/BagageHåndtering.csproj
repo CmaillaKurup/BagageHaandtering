@@ -39,12 +39,12 @@
     </ItemGroup>
     <ItemGroup>
         <Compile Include="Counter.cs" />
-        <Compile Include="Gagts.cs" />
+        <Compile Include="Gate.cs" />
         <Compile Include="Manager.cs" />
         <Compile Include="Program.cs" />
         <Compile Include="Properties\AssemblyInfo.cs" />
         <Compile Include="Sorting.cs" />
-        <Compile Include="Suitcases.cs" />
+        <Compile Include="Suitcase.cs" />
     </ItemGroup>
     <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
     <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

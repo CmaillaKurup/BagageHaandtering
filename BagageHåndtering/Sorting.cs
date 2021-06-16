@@ -16,28 +16,28 @@ namespace BagageHåndtering
         {
             while (true)
             {
-                Suitcases tempSuitcase;
-                lock (Program.mng.SortingQueue)
+                Suitcase tempSuitcase;
+                lock (Program._mng.SortingQueue)
                 {
-                    if (Program.mng.SortingQueue.Count == 0)
+                    if (Program._mng.SortingQueue.Count == 0)
                     {
-                        Monitor.Wait(Program.mng.SortingQueue);
+                        Monitor.Wait(Program._mng.SortingQueue);
                     }
-                    tempSuitcase = Program.mng.SortingQueue.Dequeue();
-                    Monitor.PulseAll(Program.mng.SortingQueue);
+                    tempSuitcase = Program._mng.SortingQueue.Dequeue();
+                    Monitor.PulseAll(Program._mng.SortingQueue);
                 }
                 
-                int temp = Program.mng._randome.Next(100, 2000);
+                int temp = Program._mng._randome.Next(100, 2000);
                 Thread.Sleep(temp);
                 
-                lock (Program.mng.GateQueue)
+                lock (Program._mng.GateQueue)
                 {
-                    if (Program.mng.GateQueue.Count > 9)
+                    if (Program._mng.GateQueue.Count > 9)
                     {
-                        Monitor.Wait(Program.mng.GateQueue);
+                        Monitor.Wait(Program._mng.GateQueue);
                     }
-                    Program.mng.GateQueue.Enqueue(tempSuitcase);
-                    Monitor.PulseAll(Program.mng.GateQueue);
+                    Program._mng.GateQueue.Enqueue(tempSuitcase);
+                    Monitor.PulseAll(Program._mng.GateQueue);
                 }
             }
         }

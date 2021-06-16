@@ -2,7 +2,7 @@ using System;
 
 namespace BagageHåndtering
 {
-    public class Suitcases
+    public class Suitcase
     {
         private string name;
         private string destination;
@@ -10,7 +10,7 @@ namespace BagageHåndtering
         private DateTime checkedIn;
 
         //constructor
-        public Suitcases(string name, string destination, int id)
+        public Suitcase(string name, string destination, int id)
         {
             this.name = name;
             this.destination = destination;
