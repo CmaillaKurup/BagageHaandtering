@@ -30,19 +30,23 @@ namespace BagageHåndtering
                 int temp = Program._mng._randome.Next(100, 2000);
                 Thread.Sleep(temp);
                 
-                lock (Program._mng.GateOneQueue)
+                Gate gate = Program._mng.GateArray[tempSuitcase.GateNumber];
+                
+                lock (gate.GateQueue)
                 {
-                    if (Program._mng.GateOneQueue.Count > 9)
+                    if (gate.GateQueue.Count == 0)
                     {
-                        Monitor.Wait(Program._mng.GateOneQueue);
+                        Monitor.Wait(gate.GateQueue);
                     }
-                    Program._mng.GateOneQueue.Enqueue(tempSuitcase);
-                    Monitor.PulseAll(Program._mng.GateOneQueue);
+                    
+                    if (gate.GateQueue.Count > 9)
+                    {
+                        gate.GateQueue.Enqueue(tempSuitcase);
+                        Monitor.PulseAll(gate.GateQueue);
+                    }
+                    
                 }
             }
         }
-        
-        //Producer
-        //Consumer
     }
 }

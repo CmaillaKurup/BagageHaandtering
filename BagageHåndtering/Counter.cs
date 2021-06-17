@@ -1,4 +1,5 @@
 using System;
+using System.Runtime.InteropServices;
 using System.Threading;
 
 namespace BagageHåndtering
@@ -26,7 +27,8 @@ namespace BagageHåndtering
                 {
                     if (Program._mng.CounterQueue.Count == 0)
                     {
-                        Monitor.Wait(Program._mng.CounterQueue);   
+                        Monitor.Wait(Program._mng.CounterQueue);
+                        
                     }
                     tempSuitcase = Program._mng.CounterQueue.Dequeue();
                     Monitor.PulseAll(Program._mng.CounterQueue);
@@ -61,7 +63,7 @@ namespace BagageHåndtering
                     return Program.flightPlans[i];
                 }
             }
-            //the most correct would be to have an exeption handeling here - I might get back to this
+            //the most correct would be to have an exception handling here - I might get back to this
             return null;
         }
     }

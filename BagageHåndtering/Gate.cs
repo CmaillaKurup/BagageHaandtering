@@ -1,57 +1,47 @@
+using System.Collections.Generic;
 using System.Threading;
 
 namespace BagageHåndtering
 {
     public class Gate
     {
-        private string _destinationGate;
+        private Queue<Suitcase> _gateQueue = new Queue<Suitcase>();
 
         //constructor
         public Gate()
         {
+            Thread worker = new Thread(HandleLuggage);
             
+            worker.Start();
         }
         
         //incapsulation
-        public string DestinationGate
+       
+        public Queue<Suitcase> GateQueue
         {
-            get => _destinationGate;
-            set => _destinationGate = value;
+            get => _gateQueue;
+            set => _gateQueue = value;
         }
 
         //Functionality
         public void HandleLuggage()
         {
-            //_destinationGate = Program._suitcase.Destination;
-
-            
             while (true)
             {
                 Suitcase tempSuitcase;
 
                 int temp = Program._mng._randome.Next(100, 2000);
                 
-                lock (Program._mng.GateOneQueue)
+                lock (GateQueue)
                 {
-                    if (Program._mng.GateOneQueue.Count == 0)
+                    if (GateQueue.Count == 0)
                     {
-                        Monitor.Wait(Program._mng.GateOneQueue);
+                        Monitor.Wait(GateQueue);
                     }
-                    tempSuitcase = Program._mng.GateOneQueue.Dequeue();
-                    Monitor.PulseAll(Program._mng.GateOneQueue);
+                    tempSuitcase = GateQueue.Dequeue();
+                    Monitor.PulseAll(GateQueue);
                 }
-                
                 Thread.Sleep(temp);
-                
-                lock (Program._mng.GateTwoQueue)
-                {
-                    if (Program._mng.GateTwoQueue.Count > 50 && _destinationGate == "London")
-                    {
-                        Monitor.Wait(Program._mng.GateTwoQueue);
-                    }
-                    Program._mng.GateTwoQueue.Enqueue(tempSuitcase);
-                    Monitor.PulseAll(Program._mng.GateTwoQueue);
-                }
             }
         }
     }
