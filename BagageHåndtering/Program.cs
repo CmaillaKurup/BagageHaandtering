@@ -46,7 +46,6 @@ namespace BagageHåndtering
                 {
                     Console.WriteLine(_mng.GateArray[i].GateQueue.Count + " Gate " + i);
                 }
-                //Console.WriteLine(.Count + " GateOne");
             }
         }
     }

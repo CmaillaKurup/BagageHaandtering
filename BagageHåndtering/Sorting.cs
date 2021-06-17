@@ -34,17 +34,12 @@ namespace BagageHåndtering
                 
                 lock (gate.GateQueue)
                 {
-                    if (gate.GateQueue.Count == 0)
+                    if (gate.GateQueue.Count > 9)
                     {
                         Monitor.Wait(gate.GateQueue);
                     }
-                    
-                    if (gate.GateQueue.Count > 9)
-                    {
-                        gate.GateQueue.Enqueue(tempSuitcase);
-                        Monitor.PulseAll(gate.GateQueue);
-                    }
-                    
+                    gate.GateQueue.Enqueue(tempSuitcase);
+                    Monitor.PulseAll(gate.GateQueue);
                 }
             }
         }
