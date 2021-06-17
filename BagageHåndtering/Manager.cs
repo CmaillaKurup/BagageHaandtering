@@ -7,11 +7,19 @@ namespace BagageHåndtering
     public class Manager
     {
         static Queue<Suitcase> _counterQueue = new Queue<Suitcase>();
+        
         static Queue<Suitcase> _sortingQueue = new Queue<Suitcase>();
-        static Queue<Suitcase> _gateQueue = new Queue<Suitcase>();
+        
+        static Queue<Suitcase> _gateOneQueue = new Queue<Suitcase>();
+        static Queue<Suitcase> _gateTwoQueue = new Queue<Suitcase>();
+        static Queue<Suitcase> _gateThreeQueue = new Queue<Suitcase>();
+        
+        
+        /*
         private static Queue<Suitcase> _londonQueue = new Queue<Suitcase>();
         private static Queue<Suitcase> _parisQueue = new Queue<Suitcase>();
         private static Queue<Suitcase> _tralalaQueue = new Queue<Suitcase>();
+        */
 
         private Counter _counter = new Counter();
         private Sorting _sorting = new Sorting();
@@ -35,24 +43,32 @@ namespace BagageHåndtering
             get { return _counterQueue; }
             set { _counterQueue = value; }
         }
-
         public Queue<Suitcase> SortingQueue
         {
             get { return _sortingQueue; }
             set { _sortingQueue = value; }
         }
-        public Queue<Suitcase> GateQueue
+        public Queue<Suitcase> GateOneQueue
         {
-            get { return _gateQueue; }
-            set { _gateQueue = value; }
+            get { return _gateOneQueue; }
+            set { _gateOneQueue = value; }
         }
-
+        public Queue<Suitcase> GateTwoQueue
+        {
+            get { return _gateTwoQueue; }
+            set { _gateTwoQueue = value; }
+        }public Queue<Suitcase> GateThreeQueue
+        {
+            get { return _gateThreeQueue; }
+            set { _gateThreeQueue = value; }
+        }
         public Random Random
         {
             get { return _randome; }
             set { _randome = value; }
         }
 
+        /*
         public Queue<Suitcase> LondonQueue
         {
             get => _londonQueue;
@@ -70,9 +86,10 @@ namespace BagageHåndtering
             get => _tralalaQueue;
             set => _tralalaQueue = value;
         }
-        public void NewSuitcase(string name, string destination, int id)
+        */
+        public void NewSuitcase(string name, int flightNumber, int id)
         {
-            _counterQueue.Enqueue(new Suitcase(name, destination, id));
+            _counterQueue.Enqueue(new Suitcase(name, flightNumber, id));
         }
     }
 }

@@ -30,14 +30,14 @@ namespace BagageHåndtering
                 int temp = Program._mng._randome.Next(100, 2000);
                 Thread.Sleep(temp);
                 
-                lock (Program._mng.GateQueue)
+                lock (Program._mng.GateOneQueue)
                 {
-                    if (Program._mng.GateQueue.Count > 9)
+                    if (Program._mng.GateOneQueue.Count > 9)
                     {
-                        Monitor.Wait(Program._mng.GateQueue);
+                        Monitor.Wait(Program._mng.GateOneQueue);
                     }
-                    Program._mng.GateQueue.Enqueue(tempSuitcase);
-                    Monitor.PulseAll(Program._mng.GateQueue);
+                    Program._mng.GateOneQueue.Enqueue(tempSuitcase);
+                    Monitor.PulseAll(Program._mng.GateOneQueue);
                 }
             }
         }

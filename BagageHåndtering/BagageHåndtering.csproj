@@ -39,6 +39,7 @@
     </ItemGroup>
     <ItemGroup>
         <Compile Include="Counter.cs" />
+        <Compile Include="FlightPlan.cs" />
         <Compile Include="Gate.cs" />
         <Compile Include="Manager.cs" />
         <Compile Include="Program.cs" />

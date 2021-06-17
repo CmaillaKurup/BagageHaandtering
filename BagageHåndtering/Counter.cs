@@ -19,7 +19,6 @@ namespace BagageHåndtering
         //Consumer
         public void HandleLuggage()
         {
-            Console.WriteLine("Counter oppend - Thread started");
             while (true)
             {
                 Suitcase tempSuitcase;
@@ -32,8 +31,12 @@ namespace BagageHåndtering
                     tempSuitcase = Program._mng.CounterQueue.Dequeue();
                     Monitor.PulseAll(Program._mng.CounterQueue);
                 }
-
+                
+                FlightPlan flightPlan = GetFlightplan(tempSuitcase.FlightNumber);
                 tempSuitcase.CheckedIn = DateTime.Now;
+                tempSuitcase.GateNumber = flightPlan.Gate;
+                tempSuitcase.Destination = flightPlan.Destination;
+                
                 int temp = Program._mng._randome.Next(100, 2000);
                 Thread.Sleep(temp);
 
@@ -47,6 +50,19 @@ namespace BagageHåndtering
                     Monitor.PulseAll(Program._mng.SortingQueue);
                 }
             }
+        }
+
+        public FlightPlan GetFlightplan(int flightNumber)
+        {
+            for (int i = 0; i < Program.flightPlans.Count; i++)
+            {
+                if (flightNumber == Program.flightPlans[i].FlightNumber)
+                {
+                    return Program.flightPlans[i];
+                }
+            }
+            //the most correct would be to have an exeption handeling here - I might get back to this
+            return null;
         }
     }
 }
