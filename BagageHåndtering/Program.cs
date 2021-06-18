@@ -19,17 +19,17 @@ namespace BagageHåndtering
             lock (_mng.CounterQueue)
             {
                 _mng.NewSuitcase("jens", 123, 1);
-                _mng.NewSuitcase("jens", 123, 2);
-                _mng.NewSuitcase("jens", 124, 3);
-                _mng.NewSuitcase("jens", 124, 4);
-                _mng.NewSuitcase("jens", 123, 5);
-                _mng.NewSuitcase("jens", 123, 6);
-                _mng.NewSuitcase("jens", 124, 7);
-                _mng.NewSuitcase("jens", 124, 8);
-                _mng.NewSuitcase("jens", 123, 9);
-                _mng.NewSuitcase("jens", 123, 10);
-                _mng.NewSuitcase("jens", 124, 11);
-                _mng.NewSuitcase("jens", 124, 12);
+                _mng.NewSuitcase("Kurt", 123, 2);
+                _mng.NewSuitcase("Niels", 124, 3);
+                _mng.NewSuitcase("Claus", 124, 4);
+                _mng.NewSuitcase("Christian", 123, 5);
+                _mng.NewSuitcase("Signe", 123, 6);
+                _mng.NewSuitcase("Marie", 124, 7);
+                _mng.NewSuitcase("Mille", 124, 8);
+                _mng.NewSuitcase("Clara", 123, 9);
+                _mng.NewSuitcase("Susan", 123, 10);
+                _mng.NewSuitcase("Poul", 124, 11);
+                _mng.NewSuitcase("Bo", 124, 12);
                 Monitor.PulseAll(_mng.CounterQueue);
             }
 

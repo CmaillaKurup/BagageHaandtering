@@ -1,5 +1,4 @@
 using System;
-using System.Runtime.InteropServices;
 using System.Threading;
 
 namespace BagageHåndtering
@@ -15,9 +14,6 @@ namespace BagageHåndtering
         //incapsulation
         
         //funktionalitet
-
-        //Producer
-        //Consumer
         public void HandleLuggage()
         {
             while (true)
