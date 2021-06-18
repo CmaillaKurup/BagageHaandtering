@@ -7,27 +7,33 @@ namespace BagageHåndtering
     public class Manager
     {
         static Queue<Suitcase> _counterQueue = new Queue<Suitcase>();
-        
         static Queue<Suitcase> _sortingQueue = new Queue<Suitcase>();
         
-        private Counter _counter = new Counter();
+        private Counter[] _counterArray = new Counter[10];
         private Sorting _sorting = new Sorting();
-        private Gate[] _gateArray = new Gate[3];
-        
+        private Gate[] _gateArray = new Gate[2];
         public Random _randome = new Random();
 
         public Manager()
         {
-            Thread counter = new Thread(_counter.HandleLuggage);
             Thread sorting = new Thread(_sorting.HanddleLuggage);
-            
-            counter.Start();
             sorting.Start();
 
             for (int i = 0; i < _gateArray.Length; i++)
             {
                 _gateArray[i] = new Gate();
+                
+                _gateArray[i].Open = true;
             }
+
+            
+            for (int i = 0; i < _counterArray.Length; i++)
+            {
+                _counterArray[i] = new Counter();
+                
+                _counterArray[i].Open = true;
+            }
+            
         }
 
         public Queue<Suitcase> CounterQueue

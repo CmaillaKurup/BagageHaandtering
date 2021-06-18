@@ -7,38 +7,33 @@ namespace BagageHåndtering
     internal class Program
     {
         public static Manager _mng = new Manager();
-        public static Random randome = new Random();
+        public static Random random = new Random();
 
         public static List<FlightPlan> flightPlans = new List<FlightPlan>();
 
         public static void Main()
         {
-            flightPlans.Add(new FlightPlan("London", 1,123));
-            flightPlans.Add(new FlightPlan("Paris", 2,124));
+            flightPlans.Add(new FlightPlan("London", 0,123));
+            flightPlans.Add(new FlightPlan("Paris", 1,124));
 
+            string[] names = {"jens", "Kurt", "Niels"};
+            
             lock (_mng.CounterQueue)
             {
-                _mng.NewSuitcase("jens", 123, 1);
-                _mng.NewSuitcase("Kurt", 123, 2);
-                _mng.NewSuitcase("Niels", 124, 3);
-                _mng.NewSuitcase("Claus", 124, 4);
-                _mng.NewSuitcase("Christian", 123, 5);
-                _mng.NewSuitcase("Signe", 123, 6);
-                _mng.NewSuitcase("Marie", 124, 7);
-                _mng.NewSuitcase("Mille", 124, 8);
-                _mng.NewSuitcase("Clara", 123, 9);
-                _mng.NewSuitcase("Susan", 123, 10);
-                _mng.NewSuitcase("Poul", 124, 11);
-                _mng.NewSuitcase("Bo", 124, 12);
+
+                for (int i = 0; i < 1000; i++)
+                {
+                    _mng.NewSuitcase(names[random.Next(0,names.Length)], flightPlans[random.Next(0,flightPlans.Count)].FlightNumber, i);
+                }
+                
                 Monitor.PulseAll(_mng.CounterQueue);
             }
 
             while (true)
             {
-                int temp = randome.Next(100, 2000);
+                int temp = random.Next(100, 2000);
                 Thread.Sleep(temp);
-                
-                
+
                 Console.WriteLine(_mng.CounterQueue.Count + " counter");
                 Console.WriteLine(_mng.SortingQueue.Count + " sorting");
 

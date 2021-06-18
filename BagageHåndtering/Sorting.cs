@@ -35,7 +35,7 @@ namespace BagageHåndtering
                 
                 lock (gate.GateQueue)
                 {
-                    if (gate.GateQueue.Count > 9)
+                    if (gate.GateQueue.Count > 1000)
                     {
                         Monitor.Wait(gate.GateQueue);
                     }

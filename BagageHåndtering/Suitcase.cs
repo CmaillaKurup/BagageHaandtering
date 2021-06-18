@@ -4,6 +4,7 @@ namespace BagageHåndtering
 {
     public class Suitcase
     {
+        //public static ServerData _serverData = new ServerData();
         private string name;
         private string destination;
         private int gateNumber;

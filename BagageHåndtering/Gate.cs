@@ -6,7 +6,7 @@ namespace BagageHåndtering
     public class Gate
     {
         private Queue<Suitcase> _gateQueue = new Queue<Suitcase>();
-        private bool open;
+        private bool open = false;
 
         //constructor
         public Gate()
@@ -16,7 +16,12 @@ namespace BagageHåndtering
         }
         
         //incapsulation
-       
+
+        public bool Open
+        {
+            get => open;
+            set => open = value;
+        }
         public Queue<Suitcase> GateQueue
         {
             get => _gateQueue;
@@ -28,9 +33,14 @@ namespace BagageHåndtering
         {
             while (true)
             {
+                if (!open)
+                {
+                    continue;
+                }
+                
                 Suitcase tempSuitcase;
 
-                int temp = Program._mng._randome.Next(100, 2000);
+                int temp = Program._mng._randome.Next(5000, 10000);
                 
                 lock (GateQueue)
                 {

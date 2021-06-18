@@ -5,11 +5,13 @@ namespace BagageHåndtering
 {
     public class Counter
     {
-        private bool open;
+        private bool open = false;
+        
         //constructor
         public Counter()
         {
-           
+            Thread counter = new Thread(HandleLuggage);
+            counter.Start();
         }
 
         //incapsulation
@@ -23,6 +25,11 @@ namespace BagageHåndtering
         {
             while (true)
             {
+                if (!open)
+                {
+                    continue;
+                }
+                
                 Suitcase tempSuitcase;
                 lock (Program._mng.CounterQueue)
                 {
