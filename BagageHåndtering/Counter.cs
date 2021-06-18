@@ -5,14 +5,19 @@ namespace BagageHåndtering
 {
     public class Counter
     {
+        private bool open;
         //constructor
         public Counter()
         {
-            
+           
         }
 
         //incapsulation
-        
+        public bool Open
+        {
+            get => open;
+            set => open = value;
+        }
         //funktionalitet
         public void HandleLuggage()
         {
@@ -24,7 +29,6 @@ namespace BagageHåndtering
                     if (Program._mng.CounterQueue.Count == 0)
                     {
                         Monitor.Wait(Program._mng.CounterQueue);
-                        
                     }
                     tempSuitcase = Program._mng.CounterQueue.Dequeue();
                     Monitor.PulseAll(Program._mng.CounterQueue);

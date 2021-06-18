@@ -6,12 +6,12 @@ namespace BagageHåndtering
     public class Gate
     {
         private Queue<Suitcase> _gateQueue = new Queue<Suitcase>();
+        private bool open;
 
         //constructor
         public Gate()
         {
             Thread worker = new Thread(HandleLuggage);
-            
             worker.Start();
         }
         
